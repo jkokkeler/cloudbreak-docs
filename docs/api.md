@@ -16,6 +16,6 @@ $HOST Hostname of the host which runs the indentity provider
 $USERNAME Username of
 $PASSWORD
 
-Example authenticate curl call: `export $TOKEN=$(curl -k -s -iX POST -H "accept: application/x-www-form-urlencoded" -d 'credentials={"username":"'$USERNAME'","password":"'$PASSWORD'"}' "https://$HOST/identity/oauth/authorize?response_type=token&client_id=cloudbreak_shell&scope.0=openid&source=login&redirect_uri=http://cloudbreak.shell" | grep Location | cut -d'=' -f 3 | cut -d'&' -f 1)`
+Example token curl call: `export $TOKEN=$(curl -k -s -iX POST -H "accept: application/x-www-form-urlencoded" -d 'credentials={"username":"'$USERNAME'","password":"'$PASSWORD'"}' "https://$HOST/identity/oauth/authorize?response_type=token&client_id=cloudbreak_shell&scope.0=openid&source=login&redirect_uri=http://cloudbreak.shell" | grep Location | cut -d'=' -f 3 | cut -d'&' -f 1)`
 
-After getting token, example info call: `curl "https://$HOST/cb/api/v1/stacks/$STACKID" -H "Authorization: Bearer $TOKEN"`
+After getting token, example info curl call: `curl "https://$HOST/cb/api/v1/stacks/$STACKID" -H "Authorization: Bearer $TOKEN"`
